@@ -1,10 +1,22 @@
 
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAuthAction = () => {
+    if (user) {
+      signOut();
+    } else {
+      navigate('/auth');
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-blue-100 z-50">
@@ -28,9 +40,29 @@ const Navigation = () => {
               <a href="#contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                 Contact
               </a>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Get Started
-              </Button>
+              {user ? (
+                <div className="flex items-center space-x-3">
+                  <span className="text-sm text-gray-600">
+                    Welcome, {user.email}
+                  </span>
+                  <Button
+                    onClick={handleAuthAction}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center space-x-1"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </Button>
+                </div>
+              ) : (
+                <Button 
+                  onClick={handleAuthAction}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  Sign In
+                </Button>
+              )}
             </div>
           </div>
           
@@ -60,9 +92,29 @@ const Navigation = () => {
               <a href="#contact" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">
                 Contact
               </a>
-              <Button className="w-full mt-2 bg-blue-600 hover:bg-blue-700">
-                Get Started
-              </Button>
+              {user ? (
+                <div className="px-3 py-2 space-y-2">
+                  <div className="text-sm text-gray-600">
+                    Welcome, {user.email}
+                  </div>
+                  <Button
+                    onClick={handleAuthAction}
+                    variant="outline"
+                    size="sm"
+                    className="w-full flex items-center justify-center space-x-1"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </Button>
+                </div>
+              ) : (
+                <Button 
+                  onClick={handleAuthAction}
+                  className="w-full mt-2 bg-blue-600 hover:bg-blue-700"
+                >
+                  Sign In
+                </Button>
+              )}
             </div>
           </div>
         )}
