@@ -1,61 +1,61 @@
 
-import { Brain, Heart, Users, Lightbulb } from "lucide-react";
+import { Mic, Heart, Brain, Shield } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
-  const services = [
+  const features = [
     {
-      icon: Brain,
-      title: "Individual Therapy",
-      description: "One-on-one sessions with licensed therapists specialized in various mental health areas.",
-      color: "text-blue-600"
-    },
-    {
-      icon: Users,
-      title: "Group Sessions",
-      description: "Connect with others facing similar challenges in a supportive group environment.",
-      color: "text-green-600"
+      icon: Mic,
+      title: "Voice Companion",
+      description: "24/7 empathetic AI support through natural voice conversations in your preferred language.",
+      color: "from-waridi-purple to-waridi-purple-dark"
     },
     {
       icon: Heart,
-      title: "Couples Counseling",
-      description: "Strengthen relationships and improve communication with professional guidance.",
-      color: "text-red-500"
+      title: "Cultural Awareness",
+      description: "Rooted in African values and understanding, respecting your cultural context and community.",
+      color: "from-waridi-pink to-waridi-pink-dark"
     },
     {
-      icon: Lightbulb,
-      title: "Wellness Programs",
-      description: "Comprehensive programs focusing on mindfulness, stress management, and personal growth.",
-      color: "text-yellow-600"
+      icon: Brain,
+      title: "Mindfulness Sessions",
+      description: "Guided breathing exercises, meditation, and wellness practices tailored to your needs.",
+      color: "from-waridi-green to-waridi-green-dark"
+    },
+    {
+      icon: Shield,
+      title: "Crisis Support",
+      description: "Immediate help when you need it most, with connections to local mental health resources.",
+      color: "from-waridi-yellow to-waridi-yellow-dark"
     }
   ];
 
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Comprehensive Mental Health Services
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Voice Rafiki <span className="bg-gradient-to-r from-waridi-purple-dark to-waridi-pink-dark bg-clip-text text-transparent">Features</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We offer a range of evidence-based treatments and support services to help you achieve lasting mental wellness.
+            Experience mental wellness support designed with African communities in mind, powered by compassionate AI technology.
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md hover:-translate-y-1">
+          {features.map((feature, index) => (
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
               <CardHeader className="text-center pb-4">
-                <div className={`mx-auto w-16 h-16 ${service.color} bg-gray-50 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="h-8 w-8" />
+                <div className={`mx-auto w-16 h-16 bg-gradient-to-br ${feature.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <feature.icon className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-gray-900">
-                  {service.title}
+                  {feature.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-600 text-center leading-relaxed">
-                  {service.description}
+                  {feature.description}
                 </CardDescription>
               </CardContent>
             </Card>
