@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
@@ -22,7 +21,12 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-waridi-pink/20 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <img 
+              src="/pink_rose_nobg.png" 
+              alt="Waridi Logo" 
+              className="h-8 w-8"
+            />
             <div className="text-2xl font-bold bg-gradient-to-r from-waridi-pink-dark to-waridi-purple-dark bg-clip-text text-transparent">
               Waridi Wellness
             </div>

@@ -88,7 +88,7 @@ const TargetAudience = () => {
             </div>
             <div className="p-4">
               <div className="text-3xl font-bold bg-gradient-to-r from-waridi-green-dark to-waridi-yellow-dark bg-clip-text text-transparent mb-2">
-                5+ Languages
+                2+ Languages
               </div>
               <div className="text-gray-600">Cultural Context</div>
             </div>

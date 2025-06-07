@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Achieng Ochieng",
+      name: "Belinda Achieng",
       role: "University Student, Kisumu",
       location: "Kisumu, Kenya",
       content: "I felt heard for the first time in weeks. Waridi's voice rafiki gave me space to breathe and helped me manage my exam anxiety. Speaking in Dholuo made it feel like talking to family.",
@@ -13,7 +13,7 @@ const Testimonials = () => {
       rating: 5
     },
     {
-      name: "Kwame Asante",
+      name: "Brian Korir",
       role: "Software Developer, Nairobi",
       location: "Nairobi, Kenya",
       content: "As a young professional dealing with work stress, having a culturally-aware AI companion has been life-changing. The voice sessions fit perfectly into my daily routine.",
@@ -29,9 +29,9 @@ const Testimonials = () => {
       rating: 5
     },
     {
-      name: "Tendai Mukamuri",
-      role: "Teacher, Harare",
-      location: "Harare, Zimbabwe",
+      name: "Jared Onyancha",
+      role: "Teacher, Keroka",
+      location: "Keroka, Kisii",
       content: "The breathing exercises and mindfulness sessions have helped me manage stress from teaching during difficult times. It's like having a wise friend always available.",
       avatar: "TM",
       rating: 5

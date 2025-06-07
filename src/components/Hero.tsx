@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Link, Mic } from "lucide-react";
+import { Heart, Link, MessageCircle, Mic } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,10 @@ const Hero = () => {
 
   const handleVoiceRafiki = () => {
     window.open('https://tima.waridihealth.space', '_blank');
+  };
+
+  const handleChatRafiki = () => {
+    window.open('https://huggingface.co/spaces/Skier8402/tima_chatbot', '_blank');
   };
 
   return (
@@ -43,16 +47,18 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
+                onClick={handleChatRafiki}
                 className="border-waridi-purple text-waridi-purple-dark hover:bg-waridi-purple/10 px-8 py-4 text-lg"
               >
-                Learn More
+                <MessageCircle className="h-5 w-5" />
+                Try the Chat Tima
               </Button>
             </div>
             
             <div className="flex items-center gap-8 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <Heart className="h-5 w-5 text-waridi-pink-dark" />
-                <span>10,000+ supported across Kenya</span>
+                <span>5,000+ supported across Kenya</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mic className="h-5 w-5 text-waridi-purple-dark" />
@@ -64,7 +70,7 @@ const Hero = () => {
           <div className="relative animate-fade-in">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&q=80"
+                src="/kenyan_woman.jpg"
                 alt="African woman finding peace and mental wellness"
                 className="w-full h-96 object-cover"
               />
