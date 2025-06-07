@@ -1,6 +1,5 @@
-
 import { Button } from "@/components/ui/button";
-import { Heart, Mic } from "lucide-react";
+import { Heart, Link, Mic } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -9,12 +8,7 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleVoiceRafiki = () => {
-    if (user) {
-      // Navigate to voice rafiki when implemented
-      console.log("Navigate to voice rafiki");
-    } else {
-      navigate('/auth');
-    }
+    window.open('https://tima.waridihealth.space', '_blank');
   };
 
   return (
@@ -36,6 +30,7 @@ const Hero = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
+             
               <Button 
                 size="lg" 
                 onClick={handleVoiceRafiki}
@@ -44,6 +39,7 @@ const Hero = () => {
                 <Mic className="h-5 w-5" />
                 Try the Voice Rafiki
               </Button>
+              
               <Button 
                 variant="outline" 
                 size="lg" 
