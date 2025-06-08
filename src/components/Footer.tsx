@@ -120,7 +120,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Waridi Wellness. Made with ❤️ for African communities.
+              © 2025 Waridi Wellness. Made with ❤️ for African communities.
             </div>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-waridi-pink transition-colors">
