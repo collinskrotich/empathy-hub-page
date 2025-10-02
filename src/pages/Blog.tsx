@@ -3,7 +3,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 interface BlogPost {
   id: string;
@@ -18,7 +17,7 @@ const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
 
   // Blog posts data - you can expand this with more metadata
   const blogData: Omit<BlogPost, 'content'>[] = [
@@ -45,49 +44,49 @@ const Blog = () => {
     },
     {
       id: "exercise-mental-health",
-      title: "Exercise and Mental Health: Moving Your Way to Better Wellbeing",
+      title: "The Workout Secret No One Told You: How Exercise Can Heal Your Mind",
       filename: "Exercise Waridi.txt",
       date: "2024-01-08",
       readTime: "5 min read"
     },
     {
       id: "heartbreak-healing",
-      title: "Heartbreak and Healing: Navigating Emotional Recovery",
+      title: "The Breakup Survival Kit: Mental Hacks to Heal a Broken Heart Faster",
       filename: "Heartbreak Waridi .txt",
       date: "2024-01-05",
       readTime: "6 min read"
     },
     {
       id: "loneliness-connection",
-      title: "Loneliness and Connection: Building Meaningful Relationships",
+      title: "Feeling Lonely? Here's the Shocking Power of Community for Mental Health",
       filename: "Loneliness Waridi.txt",
       date: "2024-01-03",
       readTime: "5 min read"
     },
     {
       id: "sleep-deprivation",
-      title: "Sleep Deprivation: The Hidden Impact on Mental Health",
+      title: "Sleep Deprived? Your Brain Might Be Begging for Help",
       filename: "Sleep Deprivation Waridi .txt",
       date: "2024-01-01",
       readTime: "6 min read"
     },
     {
       id: "social-media-wellness",
-      title: "Social Media and Mental Wellness: Finding Balance in the Digital Age",
+      title: "Is Social Media Quietly Destroying Your Mental Health? Read This Before You Scroll Again",
       filename: "Social media Waridi .txt",
       date: "2023-12-28",
       readTime: "7 min read"
     },
     {
       id: "sunlight-mental-health",
-      title: "Sunlight for Mental Health: The Power of Natural Light",
+      title: "Craving Happiness? The Sun Might Be the Antidepressant You're Missing",
       filename: "Sunlight for mental health .txt",
       date: "2023-12-25",
       readTime: "4 min read"
     },
     {
       id: "tiny-habits",
-      title: "Tiny Habits: Small Changes for Big Mental Health Improvements",
+      title: "Tiny Habits That Quietly Rewire Your Brain for Happiness",
       filename: "Tiny habits Waridi .txt",
       date: "2023-12-22",
       readTime: "5 min read"
@@ -97,10 +96,17 @@ const Blog = () => {
   useEffect(() => {
     const loadBlogPosts = async () => {
       try {
+        setError(null);
         const postsWithContent = await Promise.all(
           blogData.map(async (post) => {
             try {
-              const response = await fetch(`/blogs/${post.filename}`);
+              // Try to fetch from the public/blogs directory
+              const response = await fetch(`/blogs/${encodeURIComponent(post.filename)}`);
+              
+              if (!response.ok) {
+                throw new Error(`Failed to load ${post.filename}: ${response.status}`);
+              }
+              
               const content = await response.text();
               return {
                 ...post,
@@ -108,9 +114,10 @@ const Blog = () => {
               };
             } catch (error) {
               console.error(`Error loading ${post.filename}:`, error);
+              // Return a fallback content for this post
               return {
                 ...post,
-                content: "Content could not be loaded."
+                content: `Content for "${post.title}" is currently unavailable. Please check back later.`
               };
             }
           })
@@ -118,6 +125,7 @@ const Blog = () => {
         setBlogPosts(postsWithContent);
       } catch (error) {
         console.error("Error loading blog posts:", error);
+        setError("Failed to load blog posts. Please refresh the page to try again.");
       } finally {
         setLoading(false);
       }
@@ -163,6 +171,23 @@ const Blog = () => {
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-waridi-purple-dark"></div>
           <p className="mt-4 text-gray-600">Loading blog posts...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-waridi-pink/20 via-white to-waridi-purple/20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-red-500 text-xl mb-4">⚠️</div>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <Button 
+            onClick={() => window.location.reload()} 
+            className="bg-gradient-to-r from-waridi-pink-dark to-waridi-purple-dark hover:from-waridi-pink to-waridi-purple text-white"
+          >
+            Refresh Page
+          </Button>
         </div>
       </div>
     );
