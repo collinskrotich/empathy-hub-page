@@ -15,12 +15,9 @@ const CTA = () => {
   };
 
   const handleChatRafiki = () => {
-    if (user) {
-      // Navigate to chat rafiki when implemented
-      console.log("Navigate to chat rafiki");
-    } else {
-      navigate('/auth');
-    }
+
+    window.open('https://tima.waridihealth.space', '_blank');
+  
   };
 
   return (
