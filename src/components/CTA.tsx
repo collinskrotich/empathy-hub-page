@@ -15,9 +15,12 @@ const CTA = () => {
   };
 
   const handleChatRafiki = () => {
-
-    window.open('https://tima.waridihealth.space', '_blank');
-  
+    if (user) {
+      // Navigate to chat rafiki when implemented
+      console.log("Navigate to chat rafiki");
+    } else {
+      navigate('/auth');
+    }
   };
 
   return (
@@ -52,7 +55,7 @@ const CTA = () => {
           </div>
         ) : (
           <Button 
-            onClick={() => navigate('/auth')}
+            onClick={handleVoiceRafiki}
             className="bg-white text-waridi-purple-dark hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold flex items-center gap-2 mx-auto"
           >
             <Mic className="h-5 w-5" />

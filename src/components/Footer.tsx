@@ -64,15 +64,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center text-gray-400">
                 <Mail className="h-4 w-4 mr-3 text-waridi-pink" />
-                <span>hello@waridiwellness.co.ke</span>
+                <span>hello@waridihealth.space</span>
               </div>
               <div className="flex items-center text-gray-400">
                 <Phone className="h-4 w-4 mr-3 text-waridi-purple" />
-                <span>+254 700 123 456</span>
+                <span>+254 745882265</span>
               </div>
               <div className="flex items-center text-gray-400">
                 <MessageCircle className="h-4 w-4 mr-3 text-waridi-green" />
-                <span>WhatsApp: +254 700 123 456</span>
+                <span>WhatsApp: +254 745882265</span>
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Waridi Wellness. Made with ❤️ for African communities.
+              © 2025 Waridi Wellness. Made with ❤️ for African communities.
             </div>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-waridi-pink transition-colors">

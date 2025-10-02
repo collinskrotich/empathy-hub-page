@@ -12,12 +12,7 @@ const VoiceRafikiPreview = () => {
   const navigate = useNavigate();
 
   const handleTryDemo = () => {
-    if (user) {
-      // Navigate to actual demo when implemented
-      setIsPlaying(!isPlaying);
-    } else {
-      navigate('/auth');
-    }
+    window.open('https://tima.waridihealth.space', '_blank');
   };
 
   return (
