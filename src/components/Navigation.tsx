@@ -25,10 +25,10 @@ const Navigation = () => {
             <img 
               src="/pink_rose_nobg.png" 
               alt="Waridi Logo" 
-              className="h-8 w-8"
+              className="h-16 w-16"
             />
             <div className="text-2xl font-bold bg-gradient-to-r from-waridi-pink-dark to-waridi-purple-dark bg-clip-text text-transparent">
-              Waridi Wellness
+              Waridi
             </div>
           </div>
           

@@ -9,21 +9,15 @@ const CTA = () => {
   const navigate = useNavigate();
 
   const handleVoiceRafiki = () => {
-    if (user) {
-      // Navigate to voice rafiki when implemented
-      console.log("Navigate to voice rafiki");
-    } else {
-      navigate('/auth');
-    }
+
+    window.open('https://tima.waridihealth.space', '_blank');
+  
   };
 
   const handleChatRafiki = () => {
-    if (user) {
-      // Navigate to chat rafiki when implemented
-      console.log("Navigate to chat rafiki");
-    } else {
-      navigate('/auth');
-    }
+
+    window.open('https://tima.waridihealth.space', '_blank');
+  
   };
 
   return (
