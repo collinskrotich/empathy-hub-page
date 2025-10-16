@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleAuthAction = () => {
     if (user) {
@@ -15,6 +16,32 @@ const Navigation = () => {
     } else {
       navigate('/auth');
     }
+  };
+
+  const handleNavigation = (path: string) => {
+    if (path.startsWith('#')) {
+      // If we're not on the home page, navigate to home first then scroll
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Small delay to ensure page loads before scrolling
+        setTimeout(() => {
+          const element = document.querySelector(path);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // We're already on home page, just scroll
+        const element = document.querySelector(path);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } else {
+      // Regular page navigation
+      navigate(path);
+    }
+    setIsMenuOpen(false); // Close mobile menu
   };
 
   return (
@@ -34,27 +61,27 @@ const Navigation = () => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <a href="#home" className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
+              <button onClick={() => handleNavigation('#home')} className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
                 Home
-              </a>
-              <a href="#features" className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button onClick={() => handleNavigation('#features')} className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
                 Features
-              </a>
-              <a href="#testimonials" className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button onClick={() => handleNavigation('#testimonials')} className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
                 Stories
-              </a>
-              <a href="/blog" className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button onClick={() => handleNavigation('/blog')} className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
                 Blog
-              </a>
-              <a href="/team" className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button onClick={() => handleNavigation('/team')} className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
                 Team
-              </a>
-              <a href="#resources" className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button onClick={() => handleNavigation('#resources')} className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
                 Resources
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button onClick={() => handleNavigation('#contact')} className="text-gray-700 hover:text-waridi-purple-dark px-3 py-2 text-sm font-medium transition-colors">
                 Contact
-              </a>
+              </button>
               {user ? (
                 <div className="flex items-center space-x-3">
                   <span className="text-sm text-gray-600">
@@ -95,27 +122,27 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              <a href="#home" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
+              <button onClick={() => handleNavigation('#home')} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
                 Home
-              </a>
-              <a href="#features" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
+              </button>
+              <button onClick={() => handleNavigation('#features')} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
                 Features
-              </a>
-              <a href="#testimonials" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
+              </button>
+              <button onClick={() => handleNavigation('#testimonials')} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
                 Stories
-              </a>
-              <a href="/blog" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
+              </button>
+              <button onClick={() => handleNavigation('/blog')} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
                 Blog
-              </a>
-              <a href="/team" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
+              </button>
+              <button onClick={() => handleNavigation('/team')} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
                 Team
-              </a>
-              <a href="#resources" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
+              </button>
+              <button onClick={() => handleNavigation('#resources')} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
                 Resources
-              </a>
-              <a href="#contact" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
+              </button>
+              <button onClick={() => handleNavigation('#contact')} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-waridi-purple-dark">
                 Contact
-              </a>
+              </button>
               {user ? (
                 <div className="px-3 py-2 space-y-2">
                   <div className="text-sm text-gray-600">

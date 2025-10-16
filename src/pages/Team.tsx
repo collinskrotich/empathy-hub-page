@@ -100,7 +100,7 @@ const Team = () => {
               Meet Our Team
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our diverse team combines medical expertise, technology innovation, and deep community knowledge to transform maternal health in Kenya.
+              Our diverse team combines medical expertise, technology innovation, and deep community knowledge to transform mental health in Kenya.
             </p>
           </div>
           
