@@ -1,9 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Download, BookOpen, Phone, ExternalLink } from "lucide-react";
+import { Download, BookOpen, Phone, ExternalLink, Calendar, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Resources = () => {
+  const navigate = useNavigate();
   const resources = [
     {
       type: "Guide",
@@ -41,22 +43,28 @@ const Resources = () => {
 
   const blogPosts = [
     {
-      title: "Why Voice-Based Therapy Works for African Communities",
-      excerpt: "Exploring how oral traditions and storytelling enhance mental wellness support.",
-      readTime: "5 min read",
-      category: "Research"
+      id: "caregiver-burnout",
+      title: "Caregiver Burnout: When Caring for Others Leaves You Empty",
+      excerpt: "Understanding the emotional toll of caring for others and practical strategies to prevent burnout while maintaining compassion.",
+      readTime: "8 min read",
+      date: "2024-01-15",
+      category: "Wellness"
     },
     {
-      title: "Ubuntu and Mental Health: Community Care Practices",
-      excerpt: "Traditional African values of community support in modern mental wellness.",
-      readTime: "7 min read",
-      category: "Culture"
-    },
-    {
-      title: "Breaking Mental Health Stigma in Rural Kenya",
-      excerpt: "Stories and strategies from community health workers making a difference.",
+      id: "emotional-first-aid",
+      title: "Emotional First Aid: The Simple Tricks to Stop Small Hurts From Becoming Big Scars",
+      excerpt: "Learn practical techniques to address emotional wounds early, preventing them from developing into deeper psychological issues.",
       readTime: "6 min read",
-      category: "Community"
+      date: "2024-01-12",
+      category: "Self-Care"
+    },
+    {
+      id: "therapy-for-everyone",
+      title: "Think Therapy Isn't for You? Here's Why Everyone Needs It (Yes, Even You)",
+      excerpt: "Breaking down misconceptions about therapy and understanding how mental health support benefits everyone, regardless of circumstances.",
+      readTime: "7 min read",
+      date: "2024-01-10",
+      category: "Mental Health"
     }
   ];
 
@@ -116,7 +124,7 @@ const Resources = () => {
           
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {blogPosts.map((post, index) => (
-              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer" onClick={() => navigate('/blog')}>
                 <CardContent className="p-6">
                   <div className="text-xs font-semibold text-waridi-purple-dark uppercase tracking-wide mb-2">
                     {post.category}
@@ -127,6 +135,19 @@ const Resources = () => {
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     {post.excerpt}
                   </p>
+                  <div className="flex items-center text-gray-500 text-xs space-x-3 mb-3">
+                    <div className="flex items-center">
+                      <Calendar className="h-3 w-3 mr-1" />
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="h-3 w-3 mr-1" />
+                      {post.readTime}
+                    </div>
+                  </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-500">{post.readTime}</span>
                     <Button variant="ghost" size="sm" className="text-waridi-purple-dark hover:bg-waridi-purple/10">
@@ -140,6 +161,7 @@ const Resources = () => {
           
           <div className="text-center">
             <Button 
+              onClick={() => navigate('/blog')}
               variant="outline"
               className="border-waridi-purple text-waridi-purple-dark hover:bg-waridi-purple/10"
             >
