@@ -16,7 +16,7 @@ const CTA = () => {
 
   const handleChatRafiki = () => {
 
-    window.open('https://tima.waridihealth.space', '_blank');
+    window.open('https://chat.waridihealth.africa/', '_blank');
   
   };
 

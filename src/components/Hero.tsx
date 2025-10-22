@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   const handleChatRafiki = () => {
-    window.open('https://huggingface.co/spaces/Skier8402/tima_chatbot', '_blank');
+    window.open('https://chat.waridihealth.africa/', '_blank');
   };
 
   return (
